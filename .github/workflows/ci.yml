@@ -28,12 +28,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install fastapi uvicorn pandas scikit-learn joblib pytest pyngrok "dask[dataframe]" httpx
 
-    # 3. Préparer les fichiers nécessaires
-    - name: Prepare data files
-      run: |
-        mkdir -p ./Data
-
-    # 4. Lancer les tests unitaires
+    # 3. Lancer les tests unitaires
     - name: Run tests
       run: pytest test_app.py
 
@@ -54,10 +49,9 @@ jobs:
 
     # 3. Déployer l'API avec ngrok
     - name: Deploy with ngrok
-      run: |
-        nohup uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
-        ngrok authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
-        ngrok http 8000
-
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
+      run: |
+        nohup uvicorn app:app --host 0.0.0.0 --port 8000 --reload &
+        ngrok http 8000
+
