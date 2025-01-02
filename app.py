@@ -6,22 +6,22 @@ import os
 app = FastAPI()
 
 # Définir le chemin relatif au fichier modèle
-model_path = os.path.join(os.path.dirname(__file__), 'Data', 'lgbm_credit.pkl')
+model_path = os.path.join(os.path.dirname(__file__), 'lgbm_credit.pkl')
 
 # Charger le modèle
 try:
     model = joblib.load(model_path)
 except FileNotFoundError:
-    raise Exception(f"Modèle introuvable au chemin {model_path}. Vérifiez que le fichier existe dans le répertoire 'Data'.")
+    raise Exception(f"Modèle introuvable au chemin {model_path}. Vérifiez que le fichier existe à la racine du dépôt.")
 
 # Définir le chemin relatif au dataset nettoyé
-data_path = os.path.join(os.path.dirname(__file__), 'Data', 'df_git_train.csv')
+data_path = os.path.join(os.path.dirname(__file__), 'df_git_train.csv')
 
 # Charger le dataset nettoyé
 try:
     df_clean = pd.read_csv(data_path)
 except FileNotFoundError:
-    raise Exception(f"Dataset nettoyé introuvable au chemin {data_path}. Vérifiez que le fichier existe dans le répertoire 'Data'.")
+    raise Exception(f"Dataset nettoyé introuvable au chemin {data_path}. Vérifiez que le fichier existe à la racine du dépôt.")
 
 @app.get("/")
 def read_root():
