@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install fastapi uvicorn pandas scikit-learn joblib pytest pyngrok "dask[dataframe]"
+        pip install fastapi uvicorn pandas scikit-learn joblib pytest pyngrok "dask[dataframe]" httpx
 
     # 3. Préparer les fichiers nécessaires
     - name: Prepare data files
