@@ -6,7 +6,7 @@ import os
 app = FastAPI()
 
 # Chemins des fichiers pour Google Colab
-project_path = "/content/drive/My Drive/OCProjet7/Data"
+project_path = "/content/drive/My Drive/OCProjet7/git"
 model_path = os.path.join(project_path, "xgb_model_optimized.pkl")
 data_path = os.path.join(project_path, "df_train_clean.csv")
 
