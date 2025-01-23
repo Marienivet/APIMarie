@@ -8,3 +8,4 @@ pyngrok
 httpx
 dask[dataframe]
 xgboost
+lightgbm
